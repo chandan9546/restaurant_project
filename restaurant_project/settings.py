@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['restaurant-website-ior0.onrender.com', '127.0.0.1', 'localhost']
 
