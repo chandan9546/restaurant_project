@@ -3,9 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['restaurant-website-ior0.onrender.com', '127.0.0.1', 'localhost']
 
@@ -73,4 +73,11 @@ MEDIA_ROOT = BASE_DIR / 'media' #Root directory for media files
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'main/static']
+
+# Sesurity purpose use this
+# Security settings
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
