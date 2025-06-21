@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/home.css' %}">
+
+
+  
+  <section class="front" style="background-image: url('{% static 'main/Image/homeback.png'%}');">
+    
+    <div class="front-overlay">
+      <h2>Welcome to Our Indian Restaurant</h2>
+      <p>Experience Authentic Flavors & Warm Ambience</p>
+      <div class="front-buttons">
+        <a href="{% url 'menu' %}" class="btn">View Menu</a>
+        <a href="{% url 'reservation' %}" class="btn outline">Reserve Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Special -->
+  <section class="specials">
+  <h3>Daily Specials</h3>
+  <div class="cards-carousel">
+    {% for special in specials %}
+      <div class="card">
+        <img src="{{ special.image.url }}" alt="{{ special.title }}">
+        <h4>{{ special.title }}</h4>
+        <p>{{ special.description }}</p>
+      </div>
+    {% empty %}
+      <p class="no-specials">No daily specials available right now.</p>
+    {% endfor %}
+  </div>
+</section>
+
+
+{% endblock %}

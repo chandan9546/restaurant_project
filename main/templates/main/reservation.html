@@ -1,0 +1,17 @@
+
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/reservation.css' %}">
+<h2>Table Reservation</h2>
+<form method="POST">
+  {% csrf_token %} <!--- ye nahi diya to error aayega -->
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="text" name="phone" placeholder="Your Phone Number" required>
+  <input type="date" name="date" required>
+  <input type="time" name="time" required>
+  <input type="number" name="guests" placeholder="No. of Guests" required>
+  <button type="submit">Reserve</button>
+</form>
+
+{% endblock %}

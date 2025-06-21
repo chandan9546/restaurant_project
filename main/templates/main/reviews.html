@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/review.css' %}">
+<div class="review-container">
+<h2>Customer Reviews</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>
+
+<h3>What our customers say:</h3>
+<ul>
+    {% for r in reviews %}
+        <li>
+            <strong>{{ r.name }}:</strong> {{ r.review }} <br>
+            <em>Rating:</em> {{ r.rating }}/5
+        </li>
+    {% empty %}
+        <li>No reviews yet.</li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

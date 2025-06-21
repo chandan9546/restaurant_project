@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/menu.css' %}">
+<div class="menu-container">
+<h2>Our Menu</h2>
+<form method="get" class="menu-filter-form">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="starter">Starter</option>
+        <option value="main">Main Course</option>
+        <option value="dessert">Dessert</option>
+        <option value="drink">Drink</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<div class="menu-grid">
+    {% for item in items %}
+    <div class="menu-item-card">
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" >
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p><strong>₹{{ item.price }}</strong></p>
+        <p><em>{{ item.category }}</em></p>
+    </div>
+    {% empty %}
+    <p>No menu items found.</p>
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}
